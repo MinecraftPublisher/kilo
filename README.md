@@ -1,6 +1,8 @@
 Kilo
 ===
 
+This fork only adds support for alternate display buffers. Find the original repo [here](https://github.com/antirez/kilo).
+
 Kilo is a small text editor in less than 1K lines of code (counted with cloc).
 
 A screencast is available here: https://asciinema.org/a/90r2i9bq8po03nazhqtsifksb
