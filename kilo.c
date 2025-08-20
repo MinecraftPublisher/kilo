@@ -202,6 +202,7 @@ struct editorSyntax HLDB[] = {
 static struct termios orig_termios; /* In order to restore at exit.*/
 
 void disableRawMode(int fd) {
+    write(STDOUT_FILENO, "\x1b[?1049l", 8);
     /* Don't even check the return value as it's too late. */
     if (E.rawmode) {
         tcsetattr(fd,TCSAFLUSH,&orig_termios);
@@ -241,6 +242,7 @@ int enableRawMode(int fd) {
     /* put terminal in raw mode after flushing */
     if (tcsetattr(fd,TCSAFLUSH,&raw) < 0) goto fatal;
     E.rawmode = 1;
+    write(STDOUT_FILENO, "\x1b[?1049h", 8);
     return 0;
 
 fatal:
